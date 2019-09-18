@@ -1,0 +1,21 @@
+facility_type,facility_site,facility_branch,facility_id,facility_key,label,long_name,latitude,longitude,address,phone
+ymca,1,nwnc,ymca_wells_fargo,ymca.1.nwnc.ymca_wells_fargo,Wells Fargo,Wells Fargo Express YMCA,36.0999,-80.2442,"100 North Main Street, Winston-Salem, NC 27101",(336)-725-9342
+ymca,1,nwnc,ymca_administrative,ymca.1.nwnc.ymca_administrative,Administrative,Administrative Offices,36.098156,-80.243589,"301 N Main St, Winston-Salem, NC 27101",(336) 777-8055
+ymca,1,nwnc,ymca_winston,ymca.1.nwnc.ymca_winston,Winston,Winston Lake YMCA,36.112903,-80.203736,"901 Waterworks Rd, Winston-Salem, NC 27101",(336) 724-9205
+ymca,1,nwnc,ymca_fulton,ymca.1.nwnc.ymca_fulton,Fulton,Fulton Family YMCA,36.185551,-80.28326,"385 W Hanes Mill Rd, Winston-Salem, NC 27105",(336) 661-1093
+ymca,1,nwnc,ymca_statesville,ymca.1.nwnc.ymca_statesville,Statesville,Statesville Family YMCA,35.800331,-80.886486,"828 Wesley Dr, Statesville, NC 28677",(704) 873-9622
+ymca,1,nwnc,ymca_wilkes_express,ymca.1.nwnc.ymca_wilkes_express,Wilkes Express,Wilkes Express YMCA,36.153934,-81.160499,"1918 W Park Dr, North Wilkesboro, NC 28659",(336) 838-2152
+ymca,1,nwnc,ymca_hanes,ymca.1.nwnc.ymca_hanes,Hanes,YMCA Camp Hanes,36.365563,-80.361203,"1225 Camp Hanes Rd, King, NC 27021",(336) 983-3131
+ymca,1,nwnc,ymca_william_white,ymca.1.nwnc.ymca_william_white,William White,William G. White Jr. Family YMCA,36.096579,-80.262622,"775 W End Blvd, Winston-Salem, NC 27101",(336) 721-2100
+ymca,1,nwnc,ymca_innovation_quarter,ymca.1.nwnc.ymca_innovation_quarter,Innovation Quarter,Innovation Quarter YMCA,36.101093,-80.239947,"525 Vine St #155, Winston-Salem, NC 27101",(336) 245-5140
+ymca,1,nwnc,ymca_yadkin,ymca.1.nwnc.ymca_yadkin,Yadkin,Yadkin,36.117522,-80.635059,"6540 Service Rd, Yadkinville, NC 27055",(336) 679-7962
+ymca,1,nwnc,ymca_barium_springs,ymca.1.nwnc.ymca_barium_springs,Barium Springs,Barium Springs Family YMCA,35.721367,-80.89537,"122 Grannis Ln, Statesville, NC 28677",(704) 883-0780
+ymca,1,nwnc,ymca_alexander,ymca.1.nwnc.ymca_alexander,Alexander,Alexander County Family YMCA,35.925743,-81.166435,"260 Black Oak Ridge Rd, Taylorsville, NC 28681",(828) 632-9699
+ymca,1,nwnc,ymca_robinhood,ymca.1.nwnc.ymca_robinhood,Robinhood,Robinhood Road Family YMCA,36.116964,-80.317389,"3474 Robinhood Rd, Winston-Salem, NC 27106",(336) 251-1090
+ymca,1,nwnc,ymca_jerry_long,ymca.1.nwnc.ymca_jerry_long,Jerry Long,Jerry Long Family YMCA,36.039058,-80.392585,"1150 S Peace Haven Rd, Clemmons, NC 27012",(336) 712-2000
+ymca,1,nwnc,ymca_gateway,ymca.1.nwnc.ymca_gateway,Gateway,Gateway YWCA,36.079187,-80.241415,"1300 S Main St, Winston-Salem, NC 27127",(336) 354-1589
+ymca,1,nwnc,ymca_kernersville,ymca.1.nwnc.ymca_kernersville,Kernersville,Kernersville Family YMCA,36.131597,-80.09271,"1113 W Mountain St, Kernersville, NC 27284",(336) 996-2231
+ymca,1,nwnc,ymca_stokes,ymca.1.nwnc.ymca_stokes,Stokes,Stokes Family YMCA,36.276684,-80.341303,"105 Moore Rd, King, NC 27021",(336) 985-9622
+ymca,1,nwnc,ymca_wilkes,ymca.1.nwnc.ymca_wilkes,Wilkes,Wilkes Family YMCA,36.137478,-81.200373,"1801 YMCA Blvd, Wilkesboro, NC 28697",(336) 838-3991
+ymca,1,nwnc,ymca_davie,ymca.1.nwnc.ymca_davie,Davie,Davie Family YMCA,35.905761,-80.555381,"215 Cemetery St, Mocksville, NC 27028",(336) 751-9622
+ymca,1,nwnc,ymca_lexington,ymca.1.nwnc.ymca_lexington,Lexington,J. Smith Young YMCA,35.8230487,-80.2597627,"119 West Third Ave, Lexington, NC 27292",(336) 249-2177

@@ -35,8 +35,15 @@ models:
       - "jsu"
       - "precise_manager"
   phenotyping:
+    post-hook: "GRANT SELECT ON {{ this }} TO {{ var('select_users')|join(', ') }}"
     materialized: view
 
 seeds:
   vars:
     select_users: *select_users
+  phenotyping:
+    post-hook: "GRANT SELECT ON {{ this }} TO {{ var('select_users')|join(', ') }}"
+    cutoff_dates:
+      column_types:
+        cutoff: DATE
+        label: TEXT
