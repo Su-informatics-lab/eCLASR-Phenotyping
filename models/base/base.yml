@@ -1,0 +1,8 @@
+---
+version: 2
+sources:
+  - name: emr
+    schema: rybarnar_dbt_emr
+    tables:
+      - name: census
+        identifier: stg_census
