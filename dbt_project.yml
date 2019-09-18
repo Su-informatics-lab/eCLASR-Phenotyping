@@ -37,6 +37,8 @@ models:
   phenotyping:
     post-hook: "GRANT SELECT ON {{ this }} TO {{ var('select_users')|join(', ') }}"
     materialized: view
+    screening:
+      materialized: table
 
 seeds:
   vars:
