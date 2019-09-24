@@ -6,3 +6,5 @@ sources:
     tables:
       - name: census
         identifier: stg_census
+      - name: emr
+        identifier: stg_emr
