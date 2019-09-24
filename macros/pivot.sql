@@ -1,4 +1,4 @@
-{# Extracted from dbt-utils: https://raw.githubusercontent.com/fishtown-analytics/dbt-utils/master/macros/sql/pivot.sql #}
+{# Extracted from dbt-utils: https://github.com/fishtown-analytics/dbt-utils #}
 
 {#
 Pivot values from rows to columns.
