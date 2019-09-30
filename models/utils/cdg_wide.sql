@@ -1,6 +1,6 @@
 SELECT
    crit.criteria_id, crit.criteria_type, crit.criteria_label, crit.criteria_description,
-   phen.phenotype_id, phen.phenotype_label,
+   phen.phenotype_id, phen.phenotype_key, phen.phenotype_label,
    facts.fact_concept
   FROM
      {{ ref('cdg_criteria') }} crit
