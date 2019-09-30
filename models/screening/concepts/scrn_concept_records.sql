@@ -1,8 +1,11 @@
+{% set screening_concepts = ['neuro', 'dep', 'bpd'] %}
+
   WITH
      CDG AS (
         SELECT criteria_id, phenotype_id, fact_concept
           FROM
-             {{ ref('cdg') }}
+             {{ ref('cdg_wide') }}
+        WHERE criteria_label IN ({{ quoted_join(screening_concepts) }})
      ),
      EMR AS (
         SELECT patient_num, encounter_num, start_date, concept, modifier, tval, nval

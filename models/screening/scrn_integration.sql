@@ -3,14 +3,14 @@
         SELECT DISTINCT patient_num FROM {{ ref('base_emr') }}
      ),
      cdg AS (
-        SELECT * FROM {{ ref('scrn_cdg_wide') }}
+        SELECT * FROM {{ ref('scrn_concepts_wide') }}
      ),
      dist AS (
         SELECT * FROM {{ ref('scrn_distance_wide') }}
      )
 SELECT
    pts.patient_num,
-   {{ star(from=ref('scrn_cdg_wide'), except=['patient_num']) }},
+   {{ star(from=ref('scrn_concepts_wide'), except=['patient_num']) }},
    {{ star(from=ref('scrn_distance_wide'), except=['patient_num']) }}
   FROM
      patients pts

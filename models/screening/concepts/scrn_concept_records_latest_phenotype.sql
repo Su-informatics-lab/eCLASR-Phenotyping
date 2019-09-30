@@ -1,7 +1,7 @@
   WITH
      cdg_emr AS (
         SELECT *
-          FROM {{ ref('scrn_cdg_emr') }}
+          FROM {{ ref('scrn_concept_records') }}
      ),
      grouped AS (
         SELECT
