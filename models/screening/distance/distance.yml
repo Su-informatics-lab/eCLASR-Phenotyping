@@ -1,0 +1,22 @@
+---
+version: 2
+models:
+  - name: scrn_distance
+    tests:
+      - unique:
+          column_name: "concat(facility_id, patient_num)"
+    columns:
+      - name: facility_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('facilities')
+              field: facility_id
+      - name: patient_num
+        tests: [not_null]
+      - name: distance
+        tests: [not_null]
+  - name: scrn_distance_wide
+    columns:
+      - name: patient_num
+        tests: [not_null, unique]

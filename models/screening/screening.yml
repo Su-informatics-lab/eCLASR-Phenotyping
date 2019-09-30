@@ -1,0 +1,7 @@
+---
+version: 2
+models:
+  - name: scrn_integration
+    columns:
+      - name: patient_num
+        tests: [not_null, unique]

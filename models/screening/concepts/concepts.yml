@@ -1,0 +1,47 @@
+---
+version: 2
+models:
+  - name: scrn_concept_records
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: encounter_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: concept
+        tests: [not_null]
+  - name: scrn_concept_records_latest_phenotype
+    tests:
+      - unique:
+          column_name: "concat(patient_num, criteria_id, phenotype_id)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: latest_date
+        tests: [not_null]
+  - name: scrn_concept_records_latest_criteria
+    tests:
+      - unique:
+          column_name: "concat(patient_num, criteria_id)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: criteria_label
+        tests: [not_null]
+      - name: latest_date
+        tests: [not_null]
+  - name: scrn_concepts_wide
+    columns:
+      - name: patient_num
+        tests: [not_null, unique]
