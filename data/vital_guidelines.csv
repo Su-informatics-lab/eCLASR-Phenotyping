@@ -1,8 +1,8 @@
-concept,minval,maxval
-BP_SYSTOLIC,130,
-LDL,130,
-HBA1C,6,
-VITAL:HT,50,100
-VITAL:WT,50,1000
-ECHO:BMI,10,100
-VITAL:ORIGINAL_BMI,10,100
+phenotype_key,fact_concept,minval,maxval
+bp_systolic_lt_130,,130,
+chol_ldl_lt_130,,130,
+glucose_hba1c_lt_6,,6,
+bmi,VITAL:HT,50,100
+bmi,VITAL:WT,50,1000
+bmi,ECHO:BMI,10,100
+bmi,VITAL:ORIGINAL_BMI,10,100
