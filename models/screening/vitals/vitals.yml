@@ -1,0 +1,9 @@
+---
+version: 2
+models:
+  - name: scrn_vital_exclusions
+    columns:
+      - name: patient_num
+        tests:
+          - unique
+          - not_null

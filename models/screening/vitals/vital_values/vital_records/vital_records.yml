@@ -1,0 +1,25 @@
+---
+version: 2
+models:
+  - name: scrn_vital_records
+    columns: &vrtests
+      - name: patient_num
+        tests: [not_null]
+      - name: encounter_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: concept
+        tests: [not_null]
+      - name: nval
+        tests: [not_null]
+  - name: scrn_vital_records_cholesterol
+    columns: *vrtests
+  - name: scrn_vital_records_glucose
+    columns: *vrtests
+  - name: scrn_vital_records_sbp
+    columns: *vrtests

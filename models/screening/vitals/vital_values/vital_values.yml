@@ -1,0 +1,68 @@
+---
+version: 2
+models:
+  - name: scrn_vital_medians
+    tests:
+      - unique:
+          column_name: "concat(patient_num, criteria_id, phenotype_id, cutoff_date)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: cutoff_date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: cutoff
+      - name: cutoff_label
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: label
+  - name: scrn_vital_normal
+    tests:
+      - unique:
+          column_name: "concat(patient_num, criteria_id, phenotype_id, cutoff_date)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: cutoff_date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: cutoff
+      - name: cutoff_label
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: label
+  - name: scrn_vital_normal_by_cutoff
+    tests:
+      - unique:
+          column_name: "concat(patient_num, cutoff_date_label)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: cutoff_date_label
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: label
+      - name: num_criteria
+        tests: [not_null]
+      - name: num_phenotypes
+        tests: [not_null]
+      - name: num_records
+        tests: [not_null]
