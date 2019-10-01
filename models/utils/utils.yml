@@ -1,0 +1,14 @@
+---
+version: 2
+models:
+  - name: vital_guidelines_wide
+    tests:
+      - unique:
+          column_name: "concat(criteria_id, phenotype_id, fact_concept)"
+    columns:
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+      - name: phenotype_key
+        tests: [not_null]
