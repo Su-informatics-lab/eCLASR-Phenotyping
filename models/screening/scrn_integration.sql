@@ -1,6 +1,7 @@
 {% set support_tables = {
       'cdg': 'scrn_concepts_wide',
       'vitals': 'scrn_vital_exclusions',
+      'bmi': 'scrn_bmi_exclusions',
       'dist': 'scrn_distance_wide'
    }
 %}
