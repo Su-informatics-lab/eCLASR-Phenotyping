@@ -4,4 +4,4 @@
    ]
 %}
 
-{{ select_cdg_emr_records('fact_concept', height_concept_values) }}
+{{ select_cdg_emr_records('fact_concept', height_concept_values, emr_table_ref='scrn_bmi_records_filtered') }}
