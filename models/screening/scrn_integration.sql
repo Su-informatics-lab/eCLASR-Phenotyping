@@ -1,23 +1,28 @@
+{% set support_tables = {
+      'cdg': 'scrn_concepts_wide',
+      'vitals': 'scrn_vital_exclusions',
+      'dist': 'scrn_distance_wide'
+   }
+%}
+
   WITH
      patients AS (
         SELECT DISTINCT patient_num FROM {{ ref('base_emr') }}
      ),
-     cdg AS (
-        SELECT * FROM {{ ref('scrn_concepts_wide') }}
-     ),
-     vitals AS (
-        SELECT * FROM {{ ref('scrn_vital_exclusions') }}
-     ),
-     dist AS (
-        SELECT * FROM {{ ref('scrn_distance_wide') }}
-     )
+     {% for st_key, st_ref in support_tables.items() %}
+        {{ st_key }} AS (
+           SELECT * FROM {{ ref(st_ref) }}
+        )
+        {%- if not loop.last %},{% endif %}
+     {% endfor %}
 SELECT
    pts.patient_num,
-   {{ star(from=ref('scrn_concepts_wide'), except=['patient_num']) }},
-   {{ star(from=ref('scrn_vital_exclusions'), except=['patient_num']) }},
-   {{ star(from=ref('scrn_distance_wide'), except=['patient_num']) }}
+   {% for st_key, st_ref in support_tables.items() %}
+      {{ star(from=ref(st_ref), except=['patient_num']) }}
+      {%- if not loop.last %},{% endif %}
+   {% endfor %}
   FROM
      patients pts
-        LEFT OUTER JOIN cdg ON (pts.patient_num=cdg.patient_num)
-        LEFT OUTER JOIN vitals ON (pts.patient_num=vitals.patient_num)
-        LEFT OUTER JOIN dist ON (pts.patient_num=dist.patient_num)
+        {% for st_key, st_ref in support_tables.items() %}
+        LEFT OUTER JOIN {{ st_key }} ON (pts.patient_num={{ st_key }}.patient_num)
+        {% endfor %}
