@@ -1,0 +1,15 @@
+---
+version: 2
+models:
+  - name: scrn_efi_dedupe
+    columns:
+      - name: mrn
+        tests:
+          - unique
+          - not_null
+  - name: scrn_efi
+    columns:
+      - name: patient_num
+        tests:
+          - unique
+          - not_null
