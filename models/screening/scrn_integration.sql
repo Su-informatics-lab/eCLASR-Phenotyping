@@ -2,6 +2,7 @@
       'demo': 'scrn_demo',
       'encounter': 'scrn_last_encounter',
       'cdg': 'scrn_concepts_wide',
+      'efi': 'scrn_efi',
       'vitals': 'scrn_vital_exclusions',
       'bmi': 'scrn_bmi_exclusions',
       'dist': 'scrn_distance_wide'
