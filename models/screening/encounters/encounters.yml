@@ -1,0 +1,11 @@
+---
+version: 2
+models:
+  - name: scrn_last_encounter
+    columns:
+      - name: patient_num
+        tests:
+          - unique
+          - not_null
+      - name: last_encounter_date
+        tests: [not_null]
