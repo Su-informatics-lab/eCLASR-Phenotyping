@@ -12,3 +12,5 @@ sources:
         identifier: stg_demo
       - name: encounters
         identifier: stg_encounters
+      - name: efi
+        identifier: stg_efi
