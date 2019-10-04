@@ -1,0 +1,35 @@
+---
+version: 2
+models:
+  - name: scrn_bmi_records_filtered
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: encounter_num
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: concept
+        tests: [not_null]
+      - name: nval
+        tests: [not_null]
+  - name: scrn_bmi_records_height
+    columns: &bmitests
+      - name: patient_num
+        tests: [not_null]
+      - name: encounter_num
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: concept
+        tests: [not_null]
+      - name: nval
+        tests: [not_null]
+      - name: criteria_id
+        tests: [not_null]
+      - name: phenotype_id
+        tests: [not_null]
+  - name: scrn_bmi_records_weight
+    columns: *bmitests
+  - name: scrn_bmi_records_bmi
+    columns: *bmitests

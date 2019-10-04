@@ -1,0 +1,9 @@
+---
+version: 2
+models:
+  - name: scrn_bmi_exclusions
+    columns:
+      - name: patient_num
+        tests:
+          - unique
+          - not_null

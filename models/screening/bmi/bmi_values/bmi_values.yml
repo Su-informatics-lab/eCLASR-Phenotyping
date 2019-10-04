@@ -1,0 +1,48 @@
+---
+version: 2
+models:
+  - name: scrn_bmi_median_height
+    columns:
+      - name: patient_num
+        tests: [unique, not_null]
+      - name: median_height
+        tests: [not_null]
+  - name: scrn_bmi_calculated_bmi
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: weight
+        tests: [not_null]
+      - name: median_height
+        tests: [not_null]
+      - name: bmi
+        tests: [not_null]
+  - name: scrn_bmi_combined
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: start_date
+        tests: [not_null]
+      - name: bmi
+        tests: [not_null]
+  - name: scrn_bmi_exclusion_by_cutoff
+    tests:
+      - unique:
+          column_name: "concat(patient_num, cutoff_date)"
+    columns:
+      - name: patient_num
+        tests: [not_null]
+      - name: cutoff_date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: cutoff
+      - name: cutoff_label
+        tests:
+          - not_null
+          - relationships:
+              to: ref('cutoff_dates')
+              field: label
