@@ -4,7 +4,7 @@ models:
   - name: scrn_distance
     tests:
       - unique:
-          column_name: "concat(facility_id, patient_num)"
+          column_name: "(facility_id || '-' || patient_num)"
     columns:
       - name: facility_id
         tests:

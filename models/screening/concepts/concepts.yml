@@ -18,7 +18,7 @@ models:
   - name: scrn_concept_records_latest_phenotype
     tests:
       - unique:
-          column_name: "concat(patient_num, criteria_id, phenotype_id)"
+          column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id)"
     columns:
       - name: patient_num
         tests: [not_null]
@@ -31,7 +31,7 @@ models:
   - name: scrn_concept_records_latest_criteria
     tests:
       - unique:
-          column_name: "concat(patient_num, criteria_id)"
+          column_name: "(patient_num || '-' || criteria_id)"
     columns:
       - name: patient_num
         tests: [not_null]

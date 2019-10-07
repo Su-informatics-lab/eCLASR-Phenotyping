@@ -4,7 +4,7 @@ models:
   - name: scrn_vital_medians
     tests:
       - unique:
-          column_name: "concat(patient_num, criteria_id, phenotype_id, cutoff_date)"
+          column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id || '-' || cutoff_date)"
     columns:
       - name: patient_num
         tests: [not_null]
@@ -27,7 +27,7 @@ models:
   - name: scrn_vital_normal
     tests:
       - unique:
-          column_name: "concat(patient_num, criteria_id, phenotype_id, cutoff_date)"
+          column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id || '-' || cutoff_date)"
     columns:
       - name: patient_num
         tests: [not_null]
@@ -50,7 +50,7 @@ models:
   - name: scrn_vital_normal_by_cutoff
     tests:
       - unique:
-          column_name: "concat(patient_num, cutoff_date_label)"
+          column_name: "(patient_num || '-' || cutoff_date_label)"
     columns:
       - name: patient_num
         tests: [not_null]
