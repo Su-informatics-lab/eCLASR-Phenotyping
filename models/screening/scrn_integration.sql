@@ -11,7 +11,7 @@
 
   WITH
      patients AS (
-        SELECT DISTINCT patient_num FROM {{ ref('base_emr') }}
+        SELECT patient_num FROM {{ ref('base_patients') }}
      ),
      {% for st_key, st_ref in support_tables.items() %}
         {{ st_key }} AS (
