@@ -2,9 +2,9 @@
       demo AS (
           SELECT
               patient_num,
-              sex,
-              race,
-              ethnicity,
+              coalesce(sex, '?') AS sex,
+              coalesce(race, 'U') AS race,
+              coalesce(ethnicity, 'U') AS ethnicity,
               vital_status
             FROM {{ ref('base_demo') }}
       ),
