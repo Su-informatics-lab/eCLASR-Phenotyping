@@ -30,7 +30,7 @@
         {%- endif %}
     {%- endfor %}
 
-    {%- for col in include_cols %}
+    {%- for col in include_cols|sort %}
 
         {% if relation_alias %} {{ relation_alias }}.{% endif %} {{ identifier(col) }} {% if not loop.last %},
         {% endif %}
