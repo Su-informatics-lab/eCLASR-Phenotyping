@@ -15,8 +15,8 @@
      ),
      dist AS (
         SELECT
-           fac.facility_id,
            pts.patient_num,
+           fac.facility_id,
            {{ haversine_distance("fac.latitude", "fac.longitude", "pts.latitude", "pts.longitude") }} AS distance
           FROM
              fac
