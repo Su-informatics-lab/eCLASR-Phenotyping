@@ -1,4 +1,4 @@
--- Verifies that all of the vital sign guidelines is able to be linked
+-- Verifies that all of the vital sign guidelines are able to be linked
 -- to exactly one record each in the criteria dependency graph (CDG).
 
   WITH
