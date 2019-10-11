@@ -1,6 +1,15 @@
 ---
 version: 2
 models:
+  - name: cdg_criteria_with_cutoff_date
+    columns:
+      - name: criteria_id
+        tests:
+          - unique
+          - not_null
+      - name: cutoff_date
+        tests:
+          - not_null
   - name: vital_guidelines_wide
     tests:
       - unique:
