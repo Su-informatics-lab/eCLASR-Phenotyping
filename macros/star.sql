@@ -11,7 +11,7 @@
 {% endmacro %}
 
 
-{% macro star(from, relation_alias=False, except=[]) -%}
+{% macro star(from, relation_alias=False, except=[], separator=',') -%}
 
     {%- do _is_relation(from, 'star') -%}
 
@@ -32,7 +32,7 @@
 
     {%- for col in include_cols|sort %}
 
-        {% if relation_alias %} {{ relation_alias }}.{% endif %} {{ identifier(col) }} {% if not loop.last %},
+        {% if relation_alias %} {{ relation_alias }}.{% endif %} {{ identifier(col) }} {% if not loop.last %}{{ separator }}
         {% endif %}
 
     {%- endfor -%}
