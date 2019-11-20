@@ -37,5 +37,3 @@
         )
   SELECT *
     FROM ecrit_wide
-   ORDER BY
-       patient_num
