@@ -1,3 +1,8 @@
+{# TODO: Add a column to the CDG to indicate whether each criterion should be active by default. Using
+         hard-coded exclusions for now. #}
+
+{% set excluded_criteria = ['drugs_ad', 'drugs_psychoactive'] %}
+
     WITH
         cpts AS (
             SELECT DISTINCT criteria_id, patient_num, latest_date
@@ -6,6 +11,7 @@
         cdg AS (
             SELECT DISTINCT criteria_id, criteria_label, criteria_cutoff_date
               FROM {{ ref('cdg_wide') }}
+              WHERE criteria_label NOT IN ({{ quoted_join(excluded_criteria) }})
         ),
         ecrit AS (
             SELECT
