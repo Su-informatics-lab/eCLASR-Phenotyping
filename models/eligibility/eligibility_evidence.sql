@@ -4,7 +4,7 @@
    set criteria = {
       'neuro': None,
       'bpd': None,
-      'dep': '2018-04-01',
+      'dep': '2018-10-01',
    }
 -%}
 
@@ -14,7 +14,7 @@
 {%- set vit_year = '5yrs' -%}
 {%- set vit_col =  'vit_{}'.format(vit_year) %}
 
-{%- set flds = criteria.keys()|list + [bmi_col, vit_col] -%}
+{%- set flds = criteria.keys()|list + [bmi_col, vit_col] %}
 
     WITH
         scrn AS (

@@ -1,7 +1,7 @@
     WITH
         ec AS (
             SELECT patient_num, eligible
-              FROM {{ ref('summary_patient_eligibility_conclusion') }}
+              FROM {{ ref('eligibility_conclusion') }}
         ),
         ptct AS (
             SELECT
