@@ -1,12 +1,5 @@
--- TODO: Use the criteria table instead of hardcoding the fields to use.
-
-{%-
-   set criteria = {
-      'neuro': None,
-      'bpd': None,
-      'dep': '2018-10-01',
-   }
--%}
+-- This model combines the criteria-based evidence with BMI and vitals, and uses the full patient list to
+-- ensure that all patients are represented.
 
 {%- set bmi_year = '5yrs' -%}
 {%- set bmi_col =  'bmi_{}'.format(bmi_year) %}
@@ -14,29 +7,42 @@
 {%- set vit_year = '5yrs' -%}
 {%- set vit_col =  'vit_{}'.format(vit_year) %}
 
-{%- set flds = criteria.keys()|list + [bmi_col, vit_col] %}
 
     WITH
-        scrn AS (
+        pts AS (
+            SELECT patient_num
+              FROM {{ ref('base_patients') }}
+        ),
+        concepts AS (
             SELECT
-                patient_num,
-                {{ flds|join(', ') }}
+                *
               FROM
-                  {{ ref('scrn_integration') }}
+                  {{ ref('eligibility_criteria_evidence') }}
         )
         ,
-        eligible AS (
+        bmi AS (
             SELECT
                 patient_num,
-                {% for field, value in criteria.items() %}
-                   {{ field }} IS NULL
-                   {% if value %}
-                   OR {{ field }} < '{{ value }}'
-                   {% endif %} AS eligible_{{ field }},
-                {% endfor %}
-                coalesce({{ vit_col }}, FALSE) <> TRUE as eligible_vit,
-                coalesce({{ bmi_col }}, FALSE) <> TRUE as eligible_bmi
-              FROM scrn
+                coalesce({{ bmi_col }}, FALSE) <> TRUE AS bmi
+              FROM {{ ref('scrn_bmi_exclusions') }}
+        ),
+        vit AS (
+            SELECT
+                patient_num,
+                coalesce({{ vit_col }}, FALSE) <> TRUE AS vit
+              FROM {{ ref('scrn_vital_exclusions') }}
+        ),
+        eligible AS (
+            SELECT
+                pts.patient_num,
+                {{ star(from=ref('eligibility_criteria_evidence'), relation_alias='concepts', except=['patient_num']) }},
+                bmi.bmi,
+                vit.vit
+              FROM
+                  pts
+                      LEFT OUTER JOIN concepts ON (pts.patient_num = concepts.patient_num)
+                      LEFT OUTER JOIN bmi ON (pts.patient_num = bmi.patient_num)
+                      LEFT OUTER JOIN vit ON (pts.patient_num = vit.patient_num)
         )
   SELECT *
     FROM eligible
