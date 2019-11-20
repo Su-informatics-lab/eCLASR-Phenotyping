@@ -7,7 +7,6 @@
 {%- set vit_year = '5yrs' -%}
 {%- set vit_col =  'vit_{}'.format(vit_year) %}
 
-
     WITH
         pts AS (
             SELECT patient_num
@@ -35,9 +34,9 @@
         eligible AS (
             SELECT
                 pts.patient_num,
-                {{ star(from=ref('eligibility_criteria_evidence'), relation_alias='concepts', except=['patient_num']) }},
-                bmi.bmi,
-                vit.vit
+                {{ coalesce_star(from=ref('eligibility_criteria_evidence'), default='TRUE', relation_alias='concepts', except=['patient_num']) }},
+                coalesce(bmi.bmi, TRUE) as bmi,
+                coalesce(vit.vit, TRUE) as vit
               FROM
                   pts
                       LEFT OUTER JOIN concepts ON (pts.patient_num = concepts.patient_num)
