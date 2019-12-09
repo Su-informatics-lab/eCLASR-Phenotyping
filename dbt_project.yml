@@ -2,7 +2,7 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'phenotyping'
-version: '1.0'
+version: '4.0.0'
 
 # This setting configures which "profile" dbt uses for this project. Profiles contain
 # database connection information, and should be configured in the  ~/.dbt/profiles.yml file
@@ -37,7 +37,7 @@ models:
       - "precise_manager"
   phenotyping:
     post-hook: "GRANT SELECT ON {{ this }} TO {{ var('select_users')|join(', ') }}"
-    materialized: view
+    materialized: table
     screening:
       materialized: table
 
