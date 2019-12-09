@@ -1,6 +1,6 @@
 {%
    set sbp_phenotype_keys = [
-      'bp_systolic_lt_130'
+      'bp_systolic_lt_125'
    ]
 %}
 

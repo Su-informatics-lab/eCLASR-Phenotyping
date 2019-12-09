@@ -1,6 +1,6 @@
 {%
    set cholesterol_phenotype_keys = [
-      'chol_ldl_lt_130'
+      'chol_ldl_lt_115'
    ]
 %}
 

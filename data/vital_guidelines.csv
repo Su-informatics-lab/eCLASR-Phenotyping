@@ -1,6 +1,6 @@
 phenotype_key,fact_concept,minval,maxval
-bp_systolic_lt_130,,,130
-chol_ldl_lt_130,,,130
+bp_systolic_lt_125,,,125
+chol_ldl_lt_115,,,115
 glucose_hba1c_lt_6,,,6
 bmi,VITAL:HT,50,100
 bmi,VITAL:WT,50,1000
