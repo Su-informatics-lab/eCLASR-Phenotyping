@@ -2,52 +2,99 @@
 version: 2
 models:
   - name: base_census
+    description: For distance calculations, patients addresses must be geocoded prior to processing.
     columns:
       - name: patient_num
+        description: An identifier uniquely identifying the patient. This should be distinct from the patient’s MRN.
         tests:
           - not_null
           - unique
       - name: start_date
+        description: The date associated with the underlying address record that was geocoded.
         tests: [not_null]
       - name: latitude
+        description: The latitude of the patient’s address.
         tests: [not_null]
       - name: longitude
+        description: The longitude of the patient’s address.
         tests: [not_null]
   - name: base_demo
+    description: The demographics table should contain one record per patient.
     columns:
       - name: patient_num
+        description: An identifier uniquely identifying the patient. This should be distinct from the patient’s MRN.
         tests:
           - not_null
           - unique
       - name: mrn
+        description: The patient’s MRN. Only used for linkage with the eFI data.
         tests:
           - not_null
           - unique
       - name: vital_status
+        description: A flag indicating whether there is evidence of the patient’s death.
         tests: [not_null]
       - name: birth_date
+        description: The date of the patient’s birth.
         tests: [not_null]
+      - name: sex
+        description: The patient’s sex.
+      - name: race
+        description: The patient's race.
+      - name: ethnicity
+        description: The patient's ethnicity.
   - name: base_efi
+    description: The e-Frailty Index is a measure of physical disability.
     columns:
       - name: mrn
+        description: The patient’s MRN. Linked to the demographics table to associate with the patient_num identifier.
         tests:
           - not_null
+      - name: ref_date
+        description: The time and date of the records underlying the synthesized e-Frailty measures.
+      - name: pat_id
+        description: A patient identifier used for eFrailty calculations.
+      - name: frailty_status
+        description: A value indicating the frailty of the patient.
+      - name: phys_disability
+        description: A value indicating the level of physical disability of the patient.
   - name: base_encounters
+    description: A tall table of all known visits for each patient.
     tests:
       - unique:
           column_name: "(patient_num || '-' || encounter_num)"
     columns:
       - name: patient_num
-        tests: [not_null]
-  - name: base_emr
-    columns:
-      - name: patient_num
+        description: An identifier uniquely identifying the patient. This should be distinct from the patient’s MRN.
         tests: [not_null]
       - name: encounter_num
+        description: An identifier uniquely identifying the encounter.
+      - name: start_date
+        description: The time and date of this encounter.
+  - name: base_emr
+    description: The EMR facts table should be a tall table with a separate record for each observation of each available fact.
+    columns:
+      - name: patient_num
+        description: An identifier uniquely identifying the patient. This should be distinct from the patient’s MRN.
         tests: [not_null]
+      - name: encounter_num
+        description: An identifier uniquely identifying the encounter that this data record is associated with.
+        tests: [not_null]
+      - name: start_date
+        description: The date associated with the record.
       - name: concept
+        description: The concept code for the record, e.g. “ICD9:191.5,” “LAB|A1CP:HBA1C”, etc.
         tests: [not_null]
+      - name: modifier
+        description: Any modifier that makes the concept more specific.
+      - name: tval
+        description: For textual data records, the value of the record.
+      - name: nval
+        description: For numeric data records, the value of the record.
+      - name: units
+        description: The data record’s unit, if applicable.
   - name: base_patients
+    description: An enumeration of all patient identifiers in the EMR facts table.
     columns:
       - name: patient_num
         tests:
@@ -58,12 +105,17 @@ sources:
     schema: rybarnar_dbt_emr
     tables:
       - name: census
+        description: For distance calculations, patients addresses must be geocoded prior to processing.
         identifier: stg_census
       - name: emr
+        description: The EMR facts table should be a tall table with a separate record for each observation of each available fact.
         identifier: stg_emr
       - name: demo
+        description: The demographics table should contain one record per patient.
         identifier: stg_demo
       - name: encounters
+        description: A tall table of all known visits for each patient.
         identifier: stg_encounters
       - name: efi
+        description: The e-Frailty Index is a measure of physical disability.
         identifier: stg_efi
