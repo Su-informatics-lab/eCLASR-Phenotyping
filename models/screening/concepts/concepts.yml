@@ -2,6 +2,11 @@
 version: 2
 models:
   - name: scrn_concept_records
+    description: >
+      Select the subset of criteria that can be processed using this simple
+      procedure—screening_concepts in the model script—and expand them to the
+      individual EMR facts they represent. Join those facts to the EMR records
+      corresponding to the individual facts in the CDG.
     columns:
       - name: patient_num
         tests: [not_null]
@@ -16,6 +21,7 @@ models:
       - name: concept
         tests: [not_null]
   - name: scrn_concept_records_latest_phenotype
+    description: Identify the date of the most recent evidence, grouped by phenotype.
     tests:
       - unique:
           column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id)"
@@ -29,6 +35,7 @@ models:
       - name: latest_date
         tests: [not_null]
   - name: scrn_concept_records_latest_criteria
+    description: Identify the date of the most recent evidence, grouped by criterion.
     tests:
       - unique:
           column_name: "(patient_num || '-' || criteria_id)"
@@ -42,6 +49,7 @@ models:
       - name: latest_date
         tests: [not_null]
   - name: scrn_concepts_wide
+    description: Pivot the result to a wide representation, with one record per patient and one criterion per column.
     columns:
       - name: patient_num
         tests: [not_null, unique]

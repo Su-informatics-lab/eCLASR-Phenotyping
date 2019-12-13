@@ -2,6 +2,10 @@
 version: 2
 models:
   - name: scrn_distance
+    description: >
+      The pairwise distance between each patient and each facility is calculated
+      using the haversine formula. This computation depends on each patient’s address
+      being geocoded correctly in input EMR census input table.
     tests:
       - unique:
           column_name: "(facility_id || '-' || patient_num)"
@@ -17,6 +21,7 @@ models:
       - name: distance
         tests: [not_null]
   - name: scrn_distance_wide
+    description: Pivots the scrn_distance table to a wide representation with one patent per record.
     columns:
       - name: patient_num
         tests: [not_null, unique]

@@ -2,6 +2,10 @@
 version: 2
 models:
   - name: scrn_integration
+    description: >
+      Combines all of the other screening results into a single, wide table with one
+      record per patient and columns indicating the result of the various screening
+      procedures.
     columns:
       - name: patient_num
         tests: [not_null, unique]

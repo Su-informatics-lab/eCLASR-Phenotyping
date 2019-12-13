@@ -2,6 +2,7 @@
 version: 2
 models:
   - name: scrn_vital_medians
+    description: Calculate the median values of each of the three phenotypes relative to each of the cutoff dates.
     tests:
       - unique:
           column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id || '-' || cutoff_date)"
@@ -25,6 +26,7 @@ models:
               to: ref('cutoff_dates')
               field: label
   - name: scrn_vital_normal
+    description: Determine if the each vital sign value falls within a normal range.
     tests:
       - unique:
           column_name: "(patient_num || '-' || criteria_id || '-' || phenotype_id || '-' || cutoff_date)"
@@ -48,6 +50,9 @@ models:
               to: ref('cutoff_dates')
               field: label
   - name: scrn_vital_normal_by_cutoff
+    description: >
+      Combine the three vital sign phenotypes for each patient and each cutoff date,
+      and summarize whether any or all are normal.
     tests:
       - unique:
           column_name: "(patient_num || '-' || cutoff_date_label)"

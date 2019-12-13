@@ -2,6 +2,7 @@
 version: 2
 models:
   - name: scrn_bmi_records_filtered
+    description: Select BMI-related records that fall within a range of allowable values.
     columns:
       - name: patient_num
         tests: [not_null]
@@ -14,6 +15,7 @@ models:
       - name: nval
         tests: [not_null]
   - name: scrn_bmi_records_height
+    description: Separate the filtered BMI records into a separate table for just the height records.
     columns: &bmitests
       - name: patient_num
         tests: [not_null]
@@ -30,6 +32,8 @@ models:
       - name: phenotype_id
         tests: [not_null]
   - name: scrn_bmi_records_weight
+    description: Separate the filtered BMI records into a separate table for just the height records.
     columns: *bmitests
   - name: scrn_bmi_records_bmi
+    description: Separate the filtered BMI records into a separate table for just the pre-calculated BMI records.
     columns: *bmitests

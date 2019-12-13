@@ -2,12 +2,14 @@
 version: 2
 models:
   - name: scrn_bmi_median_height
+    description: Compute the median height value for each patient.
     columns:
       - name: patient_num
         tests: [unique, not_null]
       - name: median_height
         tests: [not_null]
   - name: scrn_bmi_calculated_bmi
+    description: Calculate the BMI corresponding to each weight record for each patient using the median height.
     columns:
       - name: patient_num
         tests: [not_null]
@@ -20,6 +22,7 @@ models:
       - name: bmi
         tests: [not_null]
   - name: scrn_bmi_combined
+    description: Combine the pre-calculated BMI and median height-based BMI calculations into a single table.
     columns:
       - name: patient_num
         tests: [not_null]
@@ -27,7 +30,14 @@ models:
         tests: [not_null]
       - name: bmi
         tests: [not_null]
+  - name: scrn_bmi_value_by_cutoff
+    description: >
+      Calculate the maximum BMI value for each patient for records within each of the
+      cutoff date ranges. For each patient, this will result in a separate record for
+      each cutoff date, e.g. if there are 4 different cutoff dates, this will result in
+      4 records per patient.
   - name: scrn_bmi_exclusion_by_cutoff
+    description: Summarize whether each per-cutoff date maximum BMI is greater than or equal to the exclusion cutoff.
     tests:
       - unique:
           column_name: "(patient_num || '-' || cutoff_date)"

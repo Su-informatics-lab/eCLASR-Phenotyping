@@ -2,6 +2,9 @@
 version: 2
 models:
   - name: scrn_last_encounter
+    description: >
+      The input EMR encounters table is used to calculate the date of the most
+      recent recorded encounter for each patient.
     columns:
       - name: patient_num
         tests:

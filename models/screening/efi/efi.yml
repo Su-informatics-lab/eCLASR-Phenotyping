@@ -2,12 +2,19 @@
 version: 2
 models:
   - name: scrn_efi_dedupe
+    description: >
+      At Wake Forest, the e-Frailty Index is computed separately by a different
+      team. The only processing done on it is to de-duplicate by retaining only
+      the most recent record.
     columns:
       - name: mrn
         tests:
           - unique
           - not_null
   - name: scrn_efi
+    description: >
+      Joins the de-duplicated eFI table to the demographics table by MRN in order to
+      associate each eFI record with a patient_num.
     columns:
       - name: patient_num
         tests:

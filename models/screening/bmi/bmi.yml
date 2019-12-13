@@ -2,6 +2,10 @@
 version: 2
 models:
   - name: scrn_bmi_exclusions
+    description: >
+      Pivots the BMI value and exclusion results so that there is one record per patient
+      and two columns per cutoff date: whether the value was within the exclusion range
+      and what the maximum BMI value within that range was.
     columns:
       - name: patient_num
         tests:

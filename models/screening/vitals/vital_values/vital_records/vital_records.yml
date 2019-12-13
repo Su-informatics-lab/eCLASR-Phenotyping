@@ -2,6 +2,7 @@
 version: 2
 models:
   - name: scrn_vital_records
+    description: Combine the filtered SBP, glucose, and cholesterol results into a single table.
     columns: &vrtests
       - name: patient_num
         tests: [not_null]
@@ -18,8 +19,17 @@ models:
       - name: nval
         tests: [not_null]
   - name: scrn_vital_records_cholesterol
+    description: >
+      Extract EMR records for cholesterol into a separate table. Selected records must
+      fall within an acceptable range.
     columns: *vrtests
   - name: scrn_vital_records_glucose
+    description: >
+      Extract EMR records for glucose into a separate table. Selected records must
+      fall within an acceptable range.
     columns: *vrtests
   - name: scrn_vital_records_sbp
+    description: >
+      Extract EMR records for systolic blood pressure into a separate table. Selected
+      records must fall within an acceptable range.
     columns: *vrtests

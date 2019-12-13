@@ -2,6 +2,7 @@
 version: 2
 models:
   - name: scrn_demo_age
+    description: Calculates each patient's age relative to the reference_date set in the project description.
     columns:
       - name: patient_num
         tests:
@@ -12,6 +13,9 @@ models:
       - name: age
         tests: [not_null]
   - name: scrn_demo
+    description: >
+      Combines the source demographics data with the calculated ages. Replaces NULL values
+      with symbols indicating an unknown value.
     columns:
       - name: patient_num
         tests:

@@ -2,6 +2,10 @@
 version: 2
 models:
   - name: scrn_vital_exclusions
+    description: >
+      Pivot the vital sign results so that there is one record per patient and two
+      columns per cutoff date: whether all of the values were normal—and thus fall
+      under the exclusion criteria—and the most recent evidence date for that conclusion.
     columns:
       - name: patient_num
         tests:
