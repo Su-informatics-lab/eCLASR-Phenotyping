@@ -24,9 +24,9 @@
               cutoffs.cutoff_date,
               cutoffs.cutoff_label,
               percentile_cont(0.5) WITHIN GROUP (
-                  ORDER BY CASE WHEN emr.start_date > cutoffs.cutoff_date THEN emr.nval ELSE NULL END ) AS median_value,
-              sum(CASE WHEN emr.start_date > cutoffs.cutoff_date THEN 1 ELSE 0 END)                     AS num_records,
-              max(CASE WHEN emr.start_date > cutoffs.cutoff_date THEN emr.start_date ELSE NULL END)     AS max_date
+                  ORDER BY CASE WHEN emr.start_date > cutoffs.cutoff_date THEN emr.nval ELSE NULL END )   AS median_value,
+              sum(CASE WHEN emr.start_date > cutoffs.cutoff_date THEN 1 ELSE 0 END)                       AS num_records,
+              max(CASE WHEN emr.start_date > cutoffs.cutoff_date THEN emr.start_date::DATE ELSE NULL END) AS max_date
             FROM
                 emr
                     CROSS JOIN cutoffs
